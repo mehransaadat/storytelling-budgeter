@@ -5,9 +5,9 @@ visualized, and get an AI-written narrative report about your spending —
 in the voice of "The Encouraging Mentor," "The Data-Driven Analyst," and more.
 
 Built with **Next.js 16 (App Router) + TypeScript + Tailwind CSS**, charts via
-**Recharts**, and narrative generation via the **DeepSeek API**
-(free tier: 5 million tokens, no credit card required), called from a
-secure Next.js server route (your API key never reaches the browser).
+**Recharts**, and narrative generation via **OpenRouter**
+(free model router, no credit card and no payment ever required), called
+from a secure Next.js server route (your API key never reaches the browser).
 
 ## Features implemented (matches the proposal)
 
@@ -22,15 +22,15 @@ secure Next.js server route (your API key never reaches the browser).
 
 ```bash
 npm install
-cp .env.example .env.local   # then paste your DeepSeek API key
+cp .env.example .env.local   # then paste your OpenRouter API key
 npm run dev
 ```
 
 Open http://localhost:3000.
 
-Get a free API key at https://platform.deepseek.com — sign up, then go to
-**API Keys** and create one (every new account gets 5 million free tokens,
-no credit card needed) — it goes in `.env.local` as `DEEPSEEK_API_KEY`.
+Get a free API key at https://openrouter.ai — sign up, then go to
+**Settings → Keys → Create Key** (no credit card, no payment ever
+required) — it goes in `.env.local` as `OPENROUTER_API_KEY`.
 This file is already git-ignored, so the key never gets committed.
 
 ## 2. Deploy to Vercel
@@ -45,7 +45,7 @@ vercel
 Follow the prompts (link/create a project). Then set your API key:
 
 ```bash
-vercel env add DEEPSEEK_API_KEY
+vercel env add OPENROUTER_API_KEY
 ```
 
 Paste your key when prompted, choose all environments, then:
@@ -61,8 +61,8 @@ vercel --prod
    Next.js — no config needed.
 3. Before the first deploy (or right after), go to
    **Project → Settings → Environment Variables** and add:
-   - Key: `DEEPSEEK_API_KEY`
-   - Value: your free key from https://platform.deepseek.com
+   - Key: `OPENROUTER_API_KEY`
+   - Value: your free key from https://openrouter.ai
    - Apply to Production, Preview, and Development
 4. Deploy (or redeploy so the env var takes effect).
 
@@ -74,7 +74,7 @@ That's it — the app is live on your `*.vercel.app` URL.
 src/
   app/
     page.tsx                    # dashboard (client component, wires everything up)
-    api/narrative/route.ts      # server route -> calls DeepSeek API
+    api/narrative/route.ts      # server route -> calls OpenRouter
     layout.tsx, globals.css
   components/
     TransactionForm.tsx         # dynamic input form

@@ -27,12 +27,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const apiKey = process.env.DEEPSEEK_API_KEY;
+    const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
         {
           error:
-            "Missing DEEPSEEK_API_KEY on the server. Add it in your Vercel project's Environment Variables.",
+            "Missing OPENROUTER_API_KEY on the server. Add it in your Vercel project's Environment Variables.",
         },
         { status: 500 }
       );
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
 
     const client = new OpenAI({
       apiKey,
-      baseURL: "https://api.deepseek.com",
+      baseURL: "https://openrouter.ai/api/v1",
     });
 
     const totalIncome = transactions
@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
     const userPrompt = `Persona for this report: ${TONE_LABELS[toneKey as NarrativeTone]}.\nTone instructions: ${TONE_INSTRUCTIONS[toneKey as NarrativeTone]}\n\nHere is the user's financial data as JSON:\n${JSON.stringify(summaryForModel, null, 2)}\n\nWrite the report now.`;
 
     const completion = await client.chat.completions.create({
-      model: "deepseek-chat",
+      model: "openrouter/free",
       max_tokens: 700,
       messages: [
         { role: "system", content: systemInstruction },
