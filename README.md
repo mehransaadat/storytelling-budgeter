@@ -86,15 +86,7 @@ src/
     storage.ts                  # localStorage persistence helpers
 ```
 
-## 4. Optional next step: Supabase
+## 4. Website address
+https://storytelling-budgeter.vercel.app
 
-The proposal mentions Supabase/PostgreSQL for long-term, multi-device
-storage. The current version uses `localStorage` so it works instantly with
-zero backend setup. To upgrade to Supabase later:
 
-1. Create a project at https://supabase.com and grab the URL + anon key.
-2. Add a `transactions` table matching the shape in `src/lib/types.ts`.
-3. Replace the functions in `src/lib/storage.ts` with Supabase client calls
-   (same function signatures, so nothing else in the app needs to change).
-4. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` as
-   Vercel environment variables.
