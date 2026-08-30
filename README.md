@@ -90,3 +90,7 @@ src/
 https://storytelling-budgeter.vercel.app
 
 
+## 5. Image of project
+![alt text](image.png)
+
+
